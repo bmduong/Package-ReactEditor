@@ -65,7 +65,7 @@ const App = () => {
                 {id: 25, label: 'Lisa Bonet'},
             ];
 
-            return list.filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5);
+            return list.filter((item) => item.label.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5);
         },
     };
 
