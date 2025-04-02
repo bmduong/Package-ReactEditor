@@ -37,7 +37,7 @@ const App = () => {
         },
         getSuggestion: (query) => {
             // Example: Return mention suggestions
-            return [
+            const list = [
                 {id: 1, label: 'Lea Thompson'},
                 {id: 2, label: 'Cyndi Lauper'},
                 {id: 3, label: 'Tom Cruise'},
@@ -64,6 +64,8 @@ const App = () => {
                 {id: 24, label: 'Justine Bateman'},
                 {id: 25, label: 'Lisa Bonet'},
             ];
+
+            return list.filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5);
         },
     };
 
@@ -112,7 +114,6 @@ The editor supports the following features:
 | `popupLink`     | `(previousUrl: string, submit: (url: string) => void) => void` | No       | Custom popup for adding/editing links.                                     |
 | `uploadImage`   | `(files: FileList) => Promise<string[]>`                       | No       | Function to handle image uploads and return URLs.                          |
 | `getSuggestion` | `(query: string) => Array<SuggestionItem>`                     | No       | Function to provide mention suggestions based on the query.                |
-| `extensions`    | `Array<Extension>`                                             | No       | Custom extensions to enhance editor functionality.                         |
 
 ### `Menubar`
 
