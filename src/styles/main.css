@@ -1,0 +1,167 @@
+.app {
+  padding: 20px;
+}
+
+.editor {
+  background-color: white;
+  border: 1px solid #565557;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  overflow-y: visible;
+}
+
+.editor-content {
+  padding: 0;
+  display: flex;
+}
+
+.editor-content .ProseMirror {
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  min-height: 100px;
+  cursor: text;
+  line-height: 1.4;
+}
+
+.editor-content .ProseMirror p {
+  margin: 0 0 9px 0;
+}
+
+.editor-content .ProseMirror ul p:last-child {
+  margin-bottom: 0;
+}
+
+.editor .editor-menu {
+  background-color: transparent;
+  z-index: 1;
+  align-items: center;
+  gap: 4px;
+  width: auto;
+  padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.editor .editor-menu a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.editor .editor-menu a:hover,
+.editor .editor-menu a.active {
+  background-color: #dfdfdf;
+}
+
+.editor .editor-menu a svg {
+  width: 16px;
+  height: 16px;
+}
+
+.editor .editor-menu .separation {
+  border-left: 1px solid #bdbdbd;
+  height: 18px;
+  pointer-events: none;
+  margin: 0 3px;
+}
+
+.editor .editor-content p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.editor .editor-content blockquote {
+  margin: 0;
+  padding: 5px 0 5px 10px;
+  border-left: 4px solid #ddd;
+}
+
+.editor .editor-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.editor .editor-content pre {
+  background: black;
+  border-radius: 0.5rem;
+  color: white;
+  font-family: monospace;
+  margin: 0 0 15px 0;
+  padding: 0.75rem 1rem;
+}
+
+.editor .editor-content pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.editor .editor-content img {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  cursor: zoom-in;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.editor .mention {
+  background-color: rgba(0, 17, 255, 0.05);
+  border-radius: 0.4rem;
+  box-decoration-break: clone;
+  color: #0011ff;
+  padding: 0.1rem 0.3rem;
+}
+
+.editor .mention::after {
+  content: '\200B';
+}
+
+.tippy-box .dropdown-suggestion {
+  background: white;
+  border: 1px solid rgba(61, 37, 20, 0.05);
+  border-radius: 0.7rem;
+  box-shadow:
+    0px 12px 33px 0px rgba(0, 0, 0, 0.06),
+    0px 3.618px 9.949px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  overflow: auto;
+  padding: 0.4rem;
+  position: relative;
+}
+
+.tippy-box .dropdown-suggestion a {
+  background-color: transparent;
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tippy-box .dropdown-suggestion a:hover,
+.tippy-box .dropdown-suggestion a:hover.is-selected {
+  background-color: rgba(61, 37, 20, 0.12);
+}
+
+.tippy-box .dropdown-suggestion a.is-selected {
+  background-color: rgba(61, 37, 20, 0.08);
+}
