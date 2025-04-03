@@ -112,6 +112,7 @@
 }
 
 .editor .editor-content img {
+  display: inline-block;
   width: 120px;
   height: 80px;
   object-fit: contain;

@@ -79,6 +79,10 @@ const App = () => {
 export default App;
 ```
 
+## Screenshots
+
+![Editor screenshots](https://i.imgur.com/J5SRHe0.jpeg)
+
 ## Features
 
 The editor supports the following features:
