@@ -24,7 +24,7 @@ export type MenuItem =
 export type MenuItems = Array<MenuItem>;
 
 export type SuggestionItem = {
-  id: number;
+  id: number | string;
   label: string;
 };
 

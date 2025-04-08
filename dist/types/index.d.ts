@@ -2,7 +2,7 @@ import { FocusEventHandler } from 'react';
 export type MenuItem = '' | 'bold' | 'italic' | 'underline' | 'strike' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'link' | 'image' | 'mention' | 'blockquote' | 'code-block' | 'bullet-list' | 'ordered-list' | 'text-align';
 export type MenuItems = Array<MenuItem>;
 export type SuggestionItem = {
-    id: number;
+    id: number | string;
     label: string;
 };
 export type EditorProps = {
