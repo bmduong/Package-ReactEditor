@@ -15,11 +15,11 @@ npm install @satek-vn/react-editor
 
 ```tsx
 import React, { useState } from "react";
-import Editor from "@satek-vn/react-editor";
+import { Editor, EditorConfig } from "@satek-vn/react-editor";
 
 const App = () => {
     const [content, setContent] = useState('');
-    const config = {
+    const config: EditorConfig = {
         placeholder: 'Enter content...',
         menubar: ['bold', 'italic', 'underline', 'strike', '', 'bullet-list', 'ordered-list', '', 'text-align', '', 'image', 'link', '', 'h1', 'h2', 'h3', '', 'mention'],
         uploadImage: async (files) => {

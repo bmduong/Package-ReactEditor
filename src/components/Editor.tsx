@@ -88,6 +88,7 @@ export const Editor = ({
       extensions.push(
         Image.configure({
           inline: true,
+          allowBase64: true,
         }),
       );
     }

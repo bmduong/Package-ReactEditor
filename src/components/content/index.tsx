@@ -25,6 +25,10 @@ const EditorContent = ({
     }
   }, []);
 
+  const handlePaste = useCallback((e: any) => {
+    console.log(e)
+  }, []);
+
   return (
     <TiptapContent
       editor={editor}
@@ -32,6 +36,7 @@ const EditorContent = ({
       onClick={handleClick}
       onFocus={onFocus}
       onBlur={onBlur}
+      onPaste={handlePaste}
     />
   );
 };
