@@ -1,6 +1,6 @@
 import { useEditorData } from '../../hooks';
 import { EditorContent as TiptapContent } from '@tiptap/react';
-import React, { FocusEventHandler, useCallback } from 'react';
+import { FocusEventHandler, useCallback } from 'react';
 import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
@@ -25,10 +25,6 @@ const EditorContent = ({
     }
   }, []);
 
-  const handlePaste = useCallback((e: any) => {
-    console.log(e)
-  }, []);
-
   return (
     <TiptapContent
       editor={editor}
@@ -36,7 +32,6 @@ const EditorContent = ({
       onClick={handleClick}
       onFocus={onFocus}
       onBlur={onBlur}
-      onPaste={handlePaste}
     />
   );
 };
