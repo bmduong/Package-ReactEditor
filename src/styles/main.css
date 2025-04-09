@@ -17,6 +17,8 @@
 .editor-content {
   padding: 0;
   display: flex;
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 .editor-content .ProseMirror {
@@ -78,7 +80,7 @@
   margin: 0 3px;
 }
 
-.editor .editor-content > p.is-editor-empty:first-child::before {
+.editor .editor-content p.is-editor-empty:first-child::before {
   color: #adb5bd;
   content: attr(data-placeholder);
   float: left;
@@ -139,6 +141,11 @@
 
 .editor .editor-content a {
   color: blue;
+}
+
+.editor .editor-content a[href]:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .editor .editor-content .mention {

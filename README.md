@@ -110,18 +110,19 @@ The editor supports the following features:
 
 ### `EditorConfig`
 
-| Property        | Type                                                           | Required | Description                                                                |
-|-----------------|----------------------------------------------------------------|----------|----------------------------------------------------------------------------|
-| `placeholder`   | `string`                                                       | No       | Placeholder text displayed when the editor is empty.                       |
-| `menubar`       | `string[]`                                                     | Yes      | List of menu items to display in the toolbar.                              |
-| `className`     | `string`                                                       | No       | Additional CSS class for the editor.                                       |
-| `popupLink`     | `(previousUrl: string, submit: (url: string) => void) => void` | No       | Custom popup for adding/editing links.                                     |
-| `uploadImage`   | `(files: FileList) => Promise<string[]>`                       | No       | Function to handle image uploads and return URLs.                          |
-| `getSuggestion` | `(query: string) => Array<SuggestionItem>`                     | No       | Function to provide mention suggestions based on the query.                |
+| Property        | Type                                                           | Required | Description                                                                         |
+|-----------------|----------------------------------------------------------------|----------|-------------------------------------------------------------------------------------|
+| `menubar`       | `Array<MenuItem>`                                              | Yes      | List of menu items to display in the toolbar.                                       |
+| `placeholder`   | `string`                                                       | No       | Placeholder text displayed when the editor is empty.                                |
+| `className`     | `string`                                                       | No       | Additional CSS class for the editor.                                                |
+| `readOnly`      | `boolean`                                                      | No       | If set to true, the editor switches to read-only mode, disabling content editing.   |
+| `popupLink`     | `(previousUrl: string, submit: (url: string) => void) => void` | No       | Custom popup for adding/editing links.                                              |
+| `uploadImage`   | `(files: FileList) => Promise<string[]>`                       | No       | Function to handle image uploads and return URLs.                                   |
+| `getSuggestion` | `(query: string) => Array<SuggestionItem>`                     | No       | Function to provide mention suggestions based on the query.                         |
 
-### `Menubar`
+### `MenuItem`
 
-| Menu Item       | Description                                          |
+| Name            | Description                                          |
 |-----------------|------------------------------------------------------|
 | `bold`          | Apply bold formatting to the selected text. `        |
 | `italic`        | Apply italic formatting to the selected text.        |

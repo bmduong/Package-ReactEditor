@@ -16,6 +16,7 @@ export type EditorConfig = {
     placeholder: string;
     menubar: MenuItems;
     className?: string;
+    readOnly?: boolean;
     popupLink?: (previousUrl: string, submit: (url: string) => void) => void;
     uploadImage?: (files: FileList) => Promise<string[]>;
     getSuggestion?: (query: string) => Array<SuggestionItem>;

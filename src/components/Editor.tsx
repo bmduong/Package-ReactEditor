@@ -1,5 +1,5 @@
-import React, { forwardRef, memo, useImperativeHandle, useMemo, useState } from 'react';
-import { ReactRenderer, useEditor } from '@tiptap/react';
+import React, { forwardRef, memo, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+import { mergeAttributes, ReactRenderer, useEditor } from '@tiptap/react';
 import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
 import Strike from '@tiptap/extension-strike';
@@ -163,10 +163,9 @@ export const Editor = memo(({
           renderHTML({ node, options }) {
             return [
               'span',
-              {
-                'data-id': node.attrs.id,
+              mergeAttributes({
                 class: 'mention',
-              },
+              }, options.HTMLAttributes),
               `${options.suggestion.char}${node.attrs.label}`,
             ];
           },
@@ -277,6 +276,12 @@ export const Editor = memo(({
     content: value,
   });
 
+  useEffect(() => {
+    if (editor) {
+      editor.setOptions({editable: mergedConfig.readOnly === true ? false : true})
+    }
+  }, [editor, mergedConfig.readOnly]);
+
   if (!editor) {
     return null;
   }
@@ -299,7 +304,9 @@ export const Editor = memo(({
       >
         <EditorContent onFocus={onFocus} onBlur={onBlur} />
 
-        <EditorMenu items={mergedConfig.menubar} />
+        {!mergedConfig.readOnly && (
+          <EditorMenu items={mergedConfig.menubar} />
+        )}
       </div>
     </EditorProvider>
   )
