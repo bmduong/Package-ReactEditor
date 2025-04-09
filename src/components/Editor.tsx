@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react';
+import { forwardRef, memo, useImperativeHandle, useMemo, useState } from 'react';
 import { ReactRenderer, useEditor } from '@tiptap/react';
 import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
@@ -26,7 +26,7 @@ import { EditorProvider } from '../contexts/editor';
 import EditorMenu from './menus';
 import EditorContent from './content';
 
-export const Editor = ({
+export const Editor = memo(({
   config,
   value,
   onChange,
@@ -76,7 +76,6 @@ export const Editor = ({
     if (mergedConfig.menubar.includes('link')) {
       extensions.push(
         Link.configure({
-          openOnClick: false,
           autolink: true,
           defaultProtocol: 'https',
           protocols: ['http', 'https'],
@@ -304,4 +303,4 @@ export const Editor = ({
       </div>
     </EditorProvider>
   )
-}
+});

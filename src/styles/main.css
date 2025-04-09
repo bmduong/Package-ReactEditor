@@ -32,6 +32,7 @@
   margin: 0 0 9px 0;
 }
 
+.editor-content .ProseMirror ol p:last-child,
 .editor-content .ProseMirror ul p:last-child {
   margin-bottom: 0;
 }
@@ -77,7 +78,7 @@
   margin: 0 3px;
 }
 
-.editor .editor-content p.is-editor-empty:first-child::before {
+.editor .editor-content > p.is-editor-empty:first-child::before {
   color: #adb5bd;
   content: attr(data-placeholder);
   float: left;
@@ -122,7 +123,29 @@
   margin: 5px;
 }
 
-.editor .mention {
+.editor .editor-content ul, ol {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 20px;
+  unicode-bidi: isolate;
+}
+
+.editor .editor-content ul {
+  list-style: disc;
+}
+
+.editor .editor-content ol {
+  list-style: decimal;
+}
+
+.editor .editor-content a {
+  color: blue;
+}
+
+.editor .editor-content .mention {
   background-color: rgba(0, 17, 255, 0.05);
   border-radius: 0.4rem;
   box-decoration-break: clone;
@@ -130,7 +153,7 @@
   padding: 0.1rem 0.3rem;
 }
 
-.editor .mention::after {
+.editor .editor-content .mention::after {
   content: '\200B';
 }
 

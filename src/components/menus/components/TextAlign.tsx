@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEditorData } from '../../../hooks';
 
 type Type = 'left' | 'center' | 'right' | 'justify';

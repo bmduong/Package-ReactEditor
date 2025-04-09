@@ -3,7 +3,7 @@ export type MenuItem = '' | 'bold' | 'italic' | 'underline' | 'strike' | 'h1' | 
 export type MenuItems = Array<MenuItem>;
 export type SuggestionItem = {
     id: number | string;
-    label: string;
+    name: string;
 };
 export type EditorProps = {
     config?: EditorConfig;
@@ -15,7 +15,7 @@ export type EditorProps = {
 export type EditorConfig = {
     placeholder: string;
     menubar: MenuItems;
-    className?: '';
+    className?: string;
     popupLink?: (previousUrl: string, submit: (url: string) => void) => void;
     uploadImage?: (files: FileList) => Promise<string[]>;
     getSuggestion?: (query: string) => Array<SuggestionItem>;
