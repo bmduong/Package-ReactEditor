@@ -123,10 +123,10 @@
   margin: 5px;
 }
 
-.editor .editor-content ul, ol {
+.editor .editor-content ul,
+.editor .editor-content ol {
   display: block;
   padding-left: 20px;
-  margin: 10px 0;
 }
 
 .editor .editor-content ul {
