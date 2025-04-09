@@ -1,4 +1,4 @@
-import { forwardRef, memo, useImperativeHandle, useMemo, useState } from 'react';
+import React, { forwardRef, memo, useImperativeHandle, useMemo, useState } from 'react';
 import { ReactRenderer, useEditor } from '@tiptap/react';
 import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
@@ -142,7 +142,7 @@ export const Editor = memo(({
         return (
           <div className="dropdown-suggestion">
             {props.items.length ? (
-              props.items.map((item: any, index: number) => (
+              props.items.map((item, index: number) => (
                 <a
                   className={index === selectedIndex ? 'is-selected' : ''}
                   key={index}

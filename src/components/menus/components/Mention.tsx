@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEditorData } from '../../../hooks';
 
 export const Mention = () => {

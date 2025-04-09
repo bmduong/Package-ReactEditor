@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useEditorData } from '../../../hooks';
 
 export const Image = () => {

@@ -3,7 +3,7 @@ export type MenuItem = '' | 'bold' | 'italic' | 'underline' | 'strike' | 'h1' | 
 export type MenuItems = Array<MenuItem>;
 export type SuggestionItem = {
     id: number | string;
-    name: string;
+    label: string;
 };
 export type EditorProps = {
     config?: EditorConfig;

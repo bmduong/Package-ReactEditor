@@ -1,6 +1,6 @@
-import { useEditorData } from '../../hooks';
+import React, { FocusEventHandler, useCallback } from 'react';
 import { EditorContent as TiptapContent } from '@tiptap/react';
-import { FocusEventHandler, useCallback } from 'react';
+import { useEditorData } from '../../hooks';
 import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 

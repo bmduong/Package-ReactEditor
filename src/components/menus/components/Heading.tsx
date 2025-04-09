@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEditorData } from '../../../hooks';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;

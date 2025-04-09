@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 
 export const Separation = memo(() => {
   return <span className="separation"></span>;
