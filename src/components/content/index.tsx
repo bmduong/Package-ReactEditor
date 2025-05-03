@@ -21,7 +21,11 @@ const EditorContent = ({
         {
           src: img.src,
         },
-      ]);
+      ]).on('close', () => {
+        if (document.activeElement instanceof HTMLElement) {
+          document.activeElement.blur();
+        }
+      });
     }
   }, []);
 

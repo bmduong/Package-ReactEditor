@@ -274,23 +274,30 @@ export const Editor = memo(({
   const editor = useEditor({
     extensions,
     content: value,
+    onUpdate: (e) => {
+      if (onChange) {
+        onChange(e.editor.getHTML());
+      }
+    },
   });
 
   useEffect(() => {
     if (editor) {
-      editor.setOptions({editable: mergedConfig.readOnly === true ? false : true})
+      editor.setOptions({
+        editable: mergedConfig.readOnly === true ? false : true
+      });
     }
   }, [editor, mergedConfig.readOnly]);
+
+  useEffect(() => {
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value || '');
+    }
+  }, [editor, value]);
 
   if (!editor) {
     return null;
   }
-
-  editor.on('update', (e) => {
-    if (onChange) {
-      onChange(e.editor.getHTML());
-    }
-  });
 
   const store = {
     editor,

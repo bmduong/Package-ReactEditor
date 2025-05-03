@@ -498,7 +498,7 @@ const Image = () => {
         const input = document.createElement('input');
         input.type = 'file';
         input.multiple = true;
-        input.accept = 'image/*';
+        input.accept = '.jpg,.jpeg,.png,.gif,.webp';
         input.onchange = (e) => {
             const input = e.target;
             const files = input.files;
@@ -708,7 +708,11 @@ const EditorContent = ({ onFocus, onBlur, }) => {
                 {
                     src: img.src,
                 },
-            ]);
+            ]).on('close', () => {
+                if (document.activeElement instanceof HTMLElement) {
+                    document.activeElement.blur();
+                }
+            });
         }
     }, []);
     return (jsxRuntimeExports.jsx(react.EditorContent, { editor: editor, className: "editor-content", onClick: handleClick, onFocus: onFocus, onBlur: onBlur }));
@@ -892,20 +896,27 @@ const Editor = require$$0.memo(({ config, value, onChange, onFocus, onBlur, }) =
     const editor = react.useEditor({
         extensions,
         content: value,
+        onUpdate: (e) => {
+            if (onChange) {
+                onChange(e.editor.getHTML());
+            }
+        },
     });
     require$$0.useEffect(() => {
         if (editor) {
-            editor.setOptions({ editable: mergedConfig.readOnly === true ? false : true });
+            editor.setOptions({
+                editable: mergedConfig.readOnly === true ? false : true
+            });
         }
     }, [editor, mergedConfig.readOnly]);
+    require$$0.useEffect(() => {
+        if (editor && value !== editor.getHTML()) {
+            editor.commands.setContent(value || '');
+        }
+    }, [editor, value]);
     if (!editor) {
         return null;
     }
-    editor.on('update', (e) => {
-        if (onChange) {
-            onChange(e.editor.getHTML());
-        }
-    });
     const store = {
         editor,
         config: mergedConfig,

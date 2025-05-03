@@ -9,7 +9,7 @@ export const Image = () => {
     const input = document.createElement('input');
     input.type = 'file';
     input.multiple = true;
-    input.accept = 'image/*';
+    input.accept = '.jpg,.jpeg,.png,.gif,.webp';
     input.onchange = (e) => {
       const input = e.target as HTMLInputElement;
       const files = input.files;

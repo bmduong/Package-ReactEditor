@@ -103,7 +103,7 @@ The editor supports the following features:
 |--------------|----------------------------------------|----------|-----------------------------------------------------------------------------|
 | `config`     | `EditorConfig`                         | Yes      | Configuration object for the editor.                                        |
 | `value`      | `string`                               | No       | Initial content of the editor.                                              |
-| `onChange`   | `(value: string) => void`              | Yes      | Callback function triggered when the content changes.                       |
+| `onChange`   | `(value: string) => void`              | No       | Callback function triggered when the content changes.                       |
 | `onFocus`    | `(event: FocusEvent) => void`          | No       | Callback function triggered when the editor gains focus.                    |
 | `onBlur`     | `(event: FocusEvent) => void`          | No       | Callback function triggered when the editor loses focus.                    |
 | `className`  | `string`                               | No       | Additional CSS class for the editor container.                              |
@@ -117,7 +117,7 @@ The editor supports the following features:
 | `className`     | `string`                                                       | No       | Additional CSS class for the editor.                                                |
 | `readOnly`      | `boolean`                                                      | No       | If set to true, the editor switches to read-only mode, disabling content editing.   |
 | `popupLink`     | `(previousUrl: string, submit: (url: string) => void) => void` | No       | Custom popup for adding/editing links.                                              |
-| `uploadImage`   | `(files: FileList) => Promise<string[]>`                       | No       | Function to handle image uploads and return URLs.                                   |
+| `uploadImage`   | `(files: FileList | File[]) => Promise<string[]>`              | No       | Function to handle image uploads and return URLs.                                   |
 | `getSuggestion` | `(query: string) => Array<SuggestionItem>`                     | No       | Function to provide mention suggestions based on the query.                         |
 
 ### `MenuItem`

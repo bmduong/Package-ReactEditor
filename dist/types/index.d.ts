@@ -18,7 +18,7 @@ export type EditorConfig = {
     className?: string;
     readOnly?: boolean;
     popupLink?: (previousUrl: string, submit: (url: string) => void) => void;
-    uploadImage?: (files: FileList) => Promise<string[]>;
+    uploadImage?: (files: FileList | File[]) => Promise<string[]>;
     getSuggestion?: (query: string) => Array<SuggestionItem>;
 };
 //# sourceMappingURL=index.d.ts.map
