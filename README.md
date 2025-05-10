@@ -93,6 +93,7 @@ The editor supports the following features:
 - **Block Elements**: Blockquote, Code Block.
 - **Links**: Add and edit hyperlinks.
 - **Images**: Upload and insert images.
+- **Files**: Upload and insert files.
 - **Mentions**: Mention users with suggestions.
 - **Text Alignment**: Align text (Left, Center, Right, Justify).
 - **Placeholder**: Customizable placeholder text.
@@ -103,9 +104,9 @@ The editor supports the following features:
 |--------------|----------------------------------------|----------|-----------------------------------------------------------------------------|
 | `config`     | `EditorConfig`                         | Yes      | Configuration object for the editor.                                        |
 | `value`      | `string`                               | No       | Initial content of the editor.                                              |
-| `onChange`   | `(value: string) => void`              | No       | Callback function triggered when the content changes.                       |
-| `onFocus`    | `(event: FocusEvent) => void`          | No       | Callback function triggered when the editor gains focus.                    |
-| `onBlur`     | `(event: FocusEvent) => void`          | No       | Callback function triggered when the editor loses focus.                    |
+| `onChange`   | `(value) => void`                      | No       | Callback function triggered when the content changes.                       |
+| `onFocus`    | `(event) => void`                      | No       | Callback function triggered when the editor gains focus.                    |
+| `onBlur`     | `(event) => void`                      | No       | Callback function triggered when the editor loses focus.                    |
 | `className`  | `string`                               | No       | Additional CSS class for the editor container.                              |
 
 ### `EditorConfig`
@@ -116,9 +117,10 @@ The editor supports the following features:
 | `placeholder`   | `string`                                                       | No       | Placeholder text displayed when the editor is empty.                                |
 | `className`     | `string`                                                       | No       | Additional CSS class for the editor.                                                |
 | `readOnly`      | `boolean`                                                      | No       | If set to true, the editor switches to read-only mode, disabling content editing.   |
-| `popupLink`     | `(previousUrl: string, submit: (url: string) => void) => void` | No       | Custom popup for adding/editing links.                                              |
-| `uploadImage`   | `(files: FileList | File[]) => Promise<string[]>`              | No       | Function to handle image uploads and return URLs.                                   |
-| `getSuggestion` | `(query: string) => Array<SuggestionItem>`                     | No       | Function to provide mention suggestions based on the query.                         |
+| `popupLink`     | `(previousUrl, submit) => void`                                | No       | Custom popup for adding/editing links.                                              |
+| `uploadImage`   | `(files) => Promise<string[]>`                                 | No       | Function to handle image uploads and return URLs.                                   |
+| `uploadFile`    | `(files) => Promise<FileItem[]>`                               | No       | Function to handle file uploads and return URLs.                                    |
+| `getSuggestion` | `(query) => Array<SuggestionItem>`                             | No       | Function to provide mention suggestions based on the query.                         |
 
 ### `MenuItem`
 
@@ -130,6 +132,7 @@ The editor supports the following features:
 | `strike`        | Apply strikethrough formatting to the selected text. |
 | `link`          | Add or edit a hyperlink.                             |
 | `image`         | Upload and insert an image.                          |
+| `file`          | Upload and insert an file.                           |
 | `blockquote`    | Convert the selected text into a blockquote.         |
 | `code-block`    | Insert a block of code.                              |
 | `bullet-list`   | Create a bullet list.                                |

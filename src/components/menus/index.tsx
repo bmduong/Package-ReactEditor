@@ -14,6 +14,7 @@ import {
   Image,
   Separation,
   Mention,
+  File,
 } from './components';
 import { MenuItem, MenuItems } from '../../types';
 
@@ -74,6 +75,10 @@ const Item = ({ name }: { name: MenuItem }) => {
 
   if (name === 'image') {
     return <Image />;
+  }
+
+  if (name === 'file') {
+    return <File />;
   }
 
   if (name === 'mention') {

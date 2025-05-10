@@ -2,6 +2,7 @@ export * from './Blockquote';
 export * from './Bold';
 export * from './BulletList';
 export * from './CodeBlock';
+export * from './File';
 export * from './Heading';
 export * from './Image';
 export * from './Italic';

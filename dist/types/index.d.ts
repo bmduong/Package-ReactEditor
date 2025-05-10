@@ -1,9 +1,13 @@
 import { FocusEventHandler } from 'react';
-export type MenuItem = '' | 'bold' | 'italic' | 'underline' | 'strike' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'link' | 'image' | 'mention' | 'blockquote' | 'code-block' | 'bullet-list' | 'ordered-list' | 'text-align';
+export type MenuItem = '' | 'bold' | 'italic' | 'underline' | 'strike' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'link' | 'image' | 'file' | 'mention' | 'blockquote' | 'code-block' | 'bullet-list' | 'ordered-list' | 'text-align';
 export type MenuItems = Array<MenuItem>;
 export type SuggestionItem = {
     id: number | string;
     label: string;
+};
+export type FileItem = {
+    name: string;
+    url: string;
 };
 export type EditorProps = {
     config?: EditorConfig;
@@ -19,6 +23,7 @@ export type EditorConfig = {
     readOnly?: boolean;
     popupLink?: (previousUrl: string, submit: (url: string) => void) => void;
     uploadImage?: (files: FileList | File[]) => Promise<string[]>;
+    uploadFile?: (files: FileList | File[]) => Promise<FileItem[]>;
     getSuggestion?: (query: string) => Array<SuggestionItem>;
 };
 //# sourceMappingURL=index.d.ts.map

@@ -483,6 +483,60 @@ const CodeBlock = () => {
     return (jsxRuntimeExports.jsx("a", { title: "Code Block", className: editor.isActive('codeBlock') ? 'active' : '', onClick: () => editor.chain().focus().toggleCodeBlock().run(), children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("polyline", { points: "16 18 22 12 16 6" }), jsxRuntimeExports.jsx("polyline", { points: "8 6 2 12 8 18" })] }) }));
 };
 
+const File = () => {
+    const { editor, config } = useEditorData();
+    const [inputFile, setInputFile] = require$$0.useState(null);
+    require$$0.useEffect(() => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.multiple = true;
+        input.accept = '.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt';
+        input.onchange = (e) => {
+            const input = e.target;
+            const files = input.files;
+            if (!(files === null || files === void 0 ? void 0 : files.length))
+                return;
+            if (config.uploadFile) {
+                config.uploadFile(files).then((list) => {
+                    list.map((item) => {
+                        editor.chain().focus().insertContent([
+                            {
+                                type: 'text',
+                                text: item.name,
+                                marks: [
+                                    {
+                                        type: 'link',
+                                        attrs: {
+                                            href: item.url,
+                                            target: '_blank',
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                type: 'text',
+                                text: ' ',
+                            },
+                        ]).run();
+                    });
+                });
+            }
+            else {
+                console.warn('Method uploadFile does not exist');
+            }
+            input.value = '';
+        };
+        setInputFile(input);
+        return () => setInputFile(null);
+    }, [editor, config]);
+    const handleClick = () => {
+        if (inputFile) {
+            inputFile.click();
+        }
+    };
+    return (jsxRuntimeExports.jsx("a", { onClick: handleClick, children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("path", { d: "M13.234 20.252 21 12.3" }), jsxRuntimeExports.jsx("path", { d: "m16 6-8.414 8.586a2 2 0 0 0 0 2.828 2 2 0 0 0 2.828 0l8.414-8.586a4 4 0 0 0 0-5.656 4 4 0 0 0-5.656 0l-8.415 8.585a6 6 0 1 0 8.486 8.486" })] }) }));
+};
+
 const Svg$1 = ({ level }) => {
     return (jsxRuntimeExports.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: level === 1 ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" }), jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("path", { d: "m17 12 3-2v8" })] })) : level === 2 ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" }), jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("path", { d: "M21 18h-4c0-4 4-3 4-6 0-1.5-2-2.5-4-1" })] })) : level === 3 ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" }), jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("path", { d: "M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2" }), jsxRuntimeExports.jsx("path", { d: "M17 17.5c2 1.5 4 .3 4-1.5a2 2 0 0 0-2-2" })] })) : level === 4 ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("path", { d: "M17 10v3a1 1 0 0 0 1 1h3" }), jsxRuntimeExports.jsx("path", { d: "M21 10v8" }), jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" })] })) : level === 5 ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" }), jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("path", { d: "M17 13v-3h4" }), jsxRuntimeExports.jsx("path", { d: "M17 17.7c.4.2.8.3 1.3.3 1.5 0 2.7-1.1 2.7-2.5S19.8 13 18.3 13H17" })] })) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("path", { d: "M4 12h8" }), jsxRuntimeExports.jsx("path", { d: "M4 18V6" }), jsxRuntimeExports.jsx("path", { d: "M12 18V6" }), jsxRuntimeExports.jsx("circle", { cx: "19", cy: "16", r: "2" }), jsxRuntimeExports.jsx("path", { d: "M20 10c-2 2-3 3.5-3 6" })] })) }));
 };
@@ -648,6 +702,9 @@ const Item = ({ name }) => {
     if (name === 'image') {
         return jsxRuntimeExports.jsx(Image, {});
     }
+    if (name === 'file') {
+        return jsxRuntimeExports.jsx(File, {});
+    }
     if (name === 'mention') {
         return jsxRuntimeExports.jsx(Mention, {});
     }
@@ -704,6 +761,9 @@ const EditorContent = ({ onFocus, onBlur, }) => {
     const handleClick = require$$0.useCallback((e) => {
         if (e.target.closest('img')) {
             const img = e.target.closest('img');
+            if (img.parentNode.tagName === 'A') {
+                return;
+            }
             ui.Fancybox.show([
                 {
                     src: img.src,
@@ -924,7 +984,7 @@ const Editor = require$$0.memo(({ config, value, onChange, onFocus, onBlur, }) =
     return (jsxRuntimeExports.jsx(EditorProvider, { store: store, children: jsxRuntimeExports.jsxs("div", { className: `editor ${mergedConfig.className || ''}`, children: [jsxRuntimeExports.jsx(EditorContent, { onFocus: onFocus, onBlur: onBlur }), !mergedConfig.readOnly && (jsxRuntimeExports.jsx(EditorMenu, { items: mergedConfig.menubar }))] }) }));
 });
 
-var css_248z = ".app {\r\n  padding: 20px;\r\n}\r\n\r\n.editor {\r\n  background-color: white;\r\n  border: 1px solid #565557;\r\n  box-sizing: border-box;\r\n  border-radius: 6px;\r\n  padding: 0;\r\n  font-size: 14px;\r\n  font-weight: 400;\r\n  position: relative;\r\n  overflow-y: visible;\r\n}\r\n\r\n.editor-content {\r\n  padding: 0;\r\n  display: flex;\r\n  max-height: 250px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.editor-content .ProseMirror {\r\n  padding: 10px;\r\n  outline: none;\r\n  width: 100%;\r\n  min-height: 100px;\r\n  cursor: text;\r\n  line-height: 1.4;\r\n}\r\n\r\n.editor-content .ProseMirror p {\r\n  margin: 0 0 9px 0;\r\n}\r\n\r\n.editor-content .ProseMirror ol p:last-child,\r\n.editor-content .ProseMirror ul p:last-child {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.editor .editor-menu {\r\n  background-color: transparent;\r\n  z-index: 1;\r\n  align-items: center;\r\n  gap: 4px;\r\n  width: auto;\r\n  padding: 6px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.editor .editor-menu a {\r\n  text-decoration: none;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: black;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n  background-color: transparent;\r\n  border-radius: 4px;\r\n}\r\n\r\n.editor .editor-menu a:hover,\r\n.editor .editor-menu a.active {\r\n  background-color: #dfdfdf;\r\n}\r\n\r\n.editor .editor-menu a svg {\r\n  width: 16px;\r\n  height: 16px;\r\n}\r\n\r\n.editor .editor-menu .separation {\r\n  border-left: 1px solid #bdbdbd;\r\n  height: 18px;\r\n  pointer-events: none;\r\n  margin: 0 3px;\r\n}\r\n\r\n.editor .editor-content p.is-editor-empty:first-child::before {\r\n  color: #adb5bd;\r\n  content: attr(data-placeholder);\r\n  float: left;\r\n  height: 0;\r\n  pointer-events: none;\r\n}\r\n\r\n.editor .editor-content blockquote {\r\n  margin: 0;\r\n  padding: 5px 0 5px 10px;\r\n  border-left: 4px solid #ddd;\r\n}\r\n\r\n.editor .editor-content blockquote p:last-child {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.editor .editor-content pre {\r\n  background: black;\r\n  border-radius: 0.5rem;\r\n  color: white;\r\n  font-family: monospace;\r\n  margin: 0 0 15px 0;\r\n  padding: 0.75rem 1rem;\r\n}\r\n\r\n.editor .editor-content pre code {\r\n  background: none;\r\n  color: inherit;\r\n  font-size: 0.8rem;\r\n  padding: 0;\r\n}\r\n\r\n.editor .editor-content img {\r\n  display: inline-block;\r\n  width: 120px;\r\n  height: 80px;\r\n  object-fit: contain;\r\n  cursor: zoom-in;\r\n  border: 1px solid #8d8d8d;\r\n  border-radius: 5px;\r\n  margin: 5px;\r\n}\r\n\r\n.editor .editor-content ul,\r\n.editor .editor-content ol {\r\n  display: block;\r\n  padding-left: 20px;\r\n}\r\n\r\n.editor .editor-content ul {\r\n  list-style: disc;\r\n}\r\n\r\n.editor .editor-content ol {\r\n  list-style: decimal;\r\n}\r\n\r\n.editor .editor-content a {\r\n  color: blue;\r\n}\r\n\r\n.editor .editor-content a[href]:hover {\r\n  text-decoration: underline;\r\n  cursor: pointer;\r\n}\r\n\r\n.editor .editor-content .mention {\r\n  background-color: rgba(0, 17, 255, 0.05);\r\n  border-radius: 0.4rem;\r\n  box-decoration-break: clone;\r\n  color: #0011ff;\r\n  padding: 0.1rem 0.3rem;\r\n}\r\n\r\n.editor .editor-content .mention::after {\r\n  content: '\\200B';\r\n}\r\n\r\n.tippy-box .dropdown-suggestion {\r\n  background: white;\r\n  border: 1px solid rgba(61, 37, 20, 0.05);\r\n  border-radius: 0.7rem;\r\n  box-shadow:\r\n    0px 12px 33px 0px rgba(0, 0, 0, 0.06),\r\n    0px 3.618px 9.949px 0px rgba(0, 0, 0, 0.04);\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 0.1rem;\r\n  overflow: auto;\r\n  padding: 0.4rem;\r\n  position: relative;\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a {\r\n  background-color: transparent;\r\n  display: block;\r\n  padding: 5px;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a:hover,\r\n.tippy-box .dropdown-suggestion a:hover.is-selected {\r\n  background-color: rgba(61, 37, 20, 0.12);\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a.is-selected {\r\n  background-color: rgba(61, 37, 20, 0.08);\r\n}\r\n";
+var css_248z = ".app {\r\n  padding: 20px;\r\n}\r\n\r\n.editor {\r\n  background-color: white;\r\n  border: 1px solid #565557;\r\n  box-sizing: border-box;\r\n  border-radius: 6px;\r\n  padding: 0;\r\n  font-size: 14px;\r\n  font-weight: 400;\r\n  position: relative;\r\n  overflow-y: visible;\r\n}\r\n\r\n.editor-content {\r\n  padding: 0;\r\n  display: flex;\r\n  max-height: 250px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.editor-content .ProseMirror {\r\n  padding: 10px;\r\n  outline: none;\r\n  width: 100%;\r\n  min-height: 100px;\r\n  cursor: text;\r\n  line-height: 1.4;\r\n}\r\n\r\n.editor-content .ProseMirror p {\r\n  margin: 0 0 9px 0;\r\n}\r\n\r\n.editor-content .ProseMirror ol p:last-child,\r\n.editor-content .ProseMirror ul p:last-child {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.editor .editor-menu {\r\n  background-color: transparent;\r\n  z-index: 1;\r\n  align-items: center;\r\n  gap: 4px;\r\n  width: auto;\r\n  padding: 6px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.editor .editor-menu a {\r\n  text-decoration: none;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: black;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n  background-color: transparent;\r\n  border-radius: 4px;\r\n}\r\n\r\n.editor .editor-menu a:hover,\r\n.editor .editor-menu a.active {\r\n  background-color: #dfdfdf;\r\n}\r\n\r\n.editor .editor-menu a svg {\r\n  width: 16px;\r\n  height: 16px;\r\n}\r\n\r\n.editor .editor-menu .separation {\r\n  border-left: 1px solid #bdbdbd;\r\n  height: 18px;\r\n  pointer-events: none;\r\n  margin: 0 3px;\r\n}\r\n\r\n.editor .editor-content p.is-editor-empty:first-child::before {\r\n  color: #adb5bd;\r\n  content: attr(data-placeholder);\r\n  float: left;\r\n  height: 0;\r\n  pointer-events: none;\r\n}\r\n\r\n.editor .editor-content blockquote {\r\n  margin: 0;\r\n  padding: 5px 0 5px 10px;\r\n  border-left: 4px solid #ddd;\r\n}\r\n\r\n.editor .editor-content blockquote p:last-child {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.editor .editor-content pre {\r\n  background: black;\r\n  border-radius: 0.5rem;\r\n  color: white;\r\n  font-family: monospace;\r\n  margin: 0 0 15px 0;\r\n  padding: 0.75rem 1rem;\r\n}\r\n\r\n.editor .editor-content pre code {\r\n  background: none;\r\n  color: inherit;\r\n  font-size: 0.8rem;\r\n  padding: 0;\r\n}\r\n\r\n.editor .editor-content img {\r\n  display: inline-block;\r\n  width: 120px;\r\n  height: 80px;\r\n  object-fit: contain;\r\n  cursor: zoom-in;\r\n  border: 1px solid #8d8d8d;\r\n  border-radius: 5px;\r\n  margin: 5px;\r\n}\r\n\r\n.editor .editor-content a img {\r\n  cursor: default;\r\n}\r\n\r\n.editor .editor-content ul,\r\n.editor .editor-content ol {\r\n  display: block;\r\n  padding-left: 20px;\r\n}\r\n\r\n.editor .editor-content ul {\r\n  list-style: disc;\r\n}\r\n\r\n.editor .editor-content ol {\r\n  list-style: decimal;\r\n}\r\n\r\n.editor .editor-content a[href] {\r\n  color: blue;\r\n}\r\n\r\n.editor .editor-content a[href]:hover {\r\n  text-decoration: underline;\r\n  cursor: pointer;\r\n}\r\n\r\n.editor .editor-content .mention {\r\n  background-color: rgba(0, 17, 255, 0.05);\r\n  border-radius: 0.4rem;\r\n  box-decoration-break: clone;\r\n  color: #0011ff;\r\n  padding: 0.1rem 0.3rem;\r\n}\r\n\r\n.editor .editor-content .mention::after {\r\n  content: '\\200B';\r\n}\r\n\r\n.tippy-box .dropdown-suggestion {\r\n  background: white;\r\n  border: 1px solid rgba(61, 37, 20, 0.05);\r\n  border-radius: 0.7rem;\r\n  box-shadow:\r\n    0px 12px 33px 0px rgba(0, 0, 0, 0.06),\r\n    0px 3.618px 9.949px 0px rgba(0, 0, 0, 0.04);\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 0.1rem;\r\n  overflow: auto;\r\n  padding: 0.4rem;\r\n  position: relative;\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a {\r\n  background-color: transparent;\r\n  display: block;\r\n  padding: 5px;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a:hover,\r\n.tippy-box .dropdown-suggestion a:hover.is-selected {\r\n  background-color: rgba(61, 37, 20, 0.12);\r\n}\r\n\r\n.tippy-box .dropdown-suggestion a.is-selected {\r\n  background-color: rgba(61, 37, 20, 0.08);\r\n}\r\n";
 styleInject(css_248z);
 
 exports.Editor = Editor;

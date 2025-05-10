@@ -14,6 +14,7 @@ export type MenuItem =
   | 'h6'
   | 'link'
   | 'image'
+  | 'file'
   | 'mention'
   | 'blockquote'
   | 'code-block'
@@ -26,6 +27,11 @@ export type MenuItems = Array<MenuItem>;
 export type SuggestionItem = {
   id: number | string;
   label: string;
+};
+
+export type FileItem = {
+  name: string;
+  url: string;
 };
 
 export type EditorProps = {
@@ -43,5 +49,6 @@ export type EditorConfig = {
   readOnly?: boolean;
   popupLink?: (previousUrl: string, submit: (url: string) => void) => void;
   uploadImage?: (files: FileList | File[]) => Promise<string[]>;
+  uploadFile?: (files: FileList | File[]) => Promise<FileItem[]>;
   getSuggestion?: (query: string) => Array<SuggestionItem>;
 };

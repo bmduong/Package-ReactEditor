@@ -16,6 +16,9 @@ const EditorContent = ({
   const handleClick = useCallback((e: any) => {
     if (e.target.closest('img')) {
       const img = e.target.closest('img');
+      if (img.parentNode.tagName === 'A') {
+        return;
+      }
 
       Fancybox.show([
         {
