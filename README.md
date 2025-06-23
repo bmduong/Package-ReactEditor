@@ -126,7 +126,7 @@ The editor supports the following features:
 
 | Name            | Description                                          |
 |-----------------|------------------------------------------------------|
-| `bold`          | Apply bold formatting to the selected text. `        |
+| `bold`          | Apply bold formatting to the selected text.          |
 | `italic`        | Apply italic formatting to the selected text.        |
 | `underline`     | Apply underline formatting to the selected text.     |
 | `strike`        | Apply strikethrough formatting to the selected text. |
