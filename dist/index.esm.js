@@ -481,7 +481,7 @@ const CodeBlock = () => {
     return (jsxRuntimeExports.jsx("a", { title: "Code Block", className: editor.isActive('codeBlock') ? 'active' : '', onClick: () => editor.chain().focus().toggleCodeBlock().run(), children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("polyline", { points: "16 18 22 12 16 6" }), jsxRuntimeExports.jsx("polyline", { points: "8 6 2 12 8 18" })] }) }));
 };
 
-const File = () => {
+const File$1 = () => {
     const { editor, config } = useEditorData();
     const [inputFile, setInputFile] = useState(null);
     useEffect(() => {
@@ -701,7 +701,7 @@ const Item = ({ name }) => {
         return jsxRuntimeExports.jsx(Image, {});
     }
     if (name === 'file') {
-        return jsxRuntimeExports.jsx(File, {});
+        return jsxRuntimeExports.jsx(File$1, {});
     }
     if (name === 'mention') {
         return jsxRuntimeExports.jsx(Mention, {});
@@ -755,11 +755,11 @@ var css_248z$1 = ":root{--f-spinner-width: 36px;--f-spinner-height: 36px;--f-spi
 styleInject(css_248z$1);
 
 const EditorContent = ({ onFocus, onBlur, }) => {
-    const { editor } = useEditorData();
+    const { editor, config } = useEditorData();
     const handleClick = useCallback((e) => {
-        if (e.target.closest('img')) {
+        if (e.target instanceof HTMLElement && e.target.closest('img')) {
             const img = e.target.closest('img');
-            if (img.parentNode.tagName === 'A') {
+            if (img.parentNode && img.parentNode.tagName === 'A') {
                 return;
             }
             Fancybox.show([
@@ -773,7 +773,26 @@ const EditorContent = ({ onFocus, onBlur, }) => {
             });
         }
     }, []);
-    return (jsxRuntimeExports.jsx(EditorContent$1, { editor: editor, className: "editor-content", onClick: handleClick, onFocus: onFocus, onBlur: onBlur }));
+    const handlePaste = useCallback((e) => {
+        const items = e.clipboardData && e.clipboardData.items;
+        if (items === null || items === void 0 ? void 0 : items.length) {
+            const item = items[0];
+            if (item.kind === 'file' && item.type.startsWith('image/')) {
+                const file = item.getAsFile();
+                if (file && config.uploadImage) {
+                    e.preventDefault();
+                    const ext = file.name.split('.').pop() || 'png';
+                    const newName = `img-${Date.now()}.${ext}`;
+                    const renamedFile = new File([file], newName, { type: file.type });
+                    config.uploadImage([renamedFile]).then((urls) => {
+                        editor.chain().focus().setImage({ src: urls[0] }).run();
+                    });
+                    return;
+                }
+            }
+        }
+    }, []);
+    return (jsxRuntimeExports.jsx(EditorContent$1, { editor: editor, className: "editor-content", onClick: handleClick, onFocus: onFocus, onBlur: onBlur, onPaste: handlePaste }));
 };
 
 const Editor = memo(({ config, value, onChange, onFocus, onBlur, }) => {

@@ -11,12 +11,12 @@ const EditorContent = ({
   onFocus?: FocusEventHandler<HTMLDivElement>;
   onBlur?: FocusEventHandler<HTMLDivElement>;
 }) => {
-  const { editor } = useEditorData();
+  const { editor, config } = useEditorData();
 
-  const handleClick = useCallback((e: any) => {
-    if (e.target.closest('img')) {
-      const img = e.target.closest('img');
-      if (img.parentNode.tagName === 'A') {
+  const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target instanceof HTMLElement && e.target.closest('img')) {
+      const img = e.target.closest('img') as HTMLImageElement;
+      if (img.parentNode && (img.parentNode as HTMLElement).tagName === 'A') {
         return;
       }
 
@@ -32,6 +32,26 @@ const EditorContent = ({
     }
   }, []);
 
+  const handlePaste = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (items?.length) {
+      const item = items[0];
+      if (item.kind === 'file' && item.type.startsWith('image/')) {
+        const file = item.getAsFile();
+        if (file && config.uploadImage) {
+          e.preventDefault();
+          const ext = file.name.split('.').pop() || 'png';
+          const newName = `img-${Date.now()}.${ext}`;
+          const renamedFile = new File([file], newName, { type: file.type });
+          config.uploadImage([renamedFile]).then((urls) => {
+            editor.chain().focus().setImage({ src: urls[0] }).run();
+          });
+          return;
+        }
+      }
+    }
+  }, []);
+
   return (
     <TiptapContent
       editor={editor}
@@ -39,6 +59,7 @@ const EditorContent = ({
       onClick={handleClick}
       onFocus={onFocus}
       onBlur={onBlur}
+      onPaste={handlePaste}
     />
   );
 };
