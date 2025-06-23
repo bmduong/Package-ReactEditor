@@ -58,7 +58,7 @@ export const File = () => {
   };
 
   return (
-    <a onClick={handleClick}>
+    <a title="Add File" onClick={handleClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

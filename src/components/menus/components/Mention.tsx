@@ -5,7 +5,7 @@ export const Mention = () => {
   const { editor } = useEditorData();
 
   return (
-    <a onClick={() => editor.chain().focus().insertContent(' @').run()}>
+    <a title="Mention" onClick={() => editor.chain().focus().insertContent(' @').run()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

@@ -50,16 +50,16 @@ export const TextAlign = () => {
 
   return (
     <>
-      <a onClick={() => editor.chain().focus().setTextAlign('justify').run()}>
+      <a title="Alignment Justify" onClick={() => editor.chain().focus().setTextAlign('justify').run()}>
         <Svg type="justify" />
       </a>
-      <a onClick={() => editor.chain().focus().setTextAlign('left').run()}>
+      <a title="Alignment Left" onClick={() => editor.chain().focus().setTextAlign('left').run()}>
         <Svg type="left" />
       </a>
-      <a onClick={() => editor.chain().focus().setTextAlign('center').run()}>
+      <a title="Alignment Center" onClick={() => editor.chain().focus().setTextAlign('center').run()}>
         <Svg type="center" />
       </a>
-      <a onClick={() => editor.chain().focus().setTextAlign('right').run()}>
+      <a title="Alignment Right" onClick={() => editor.chain().focus().setTextAlign('right').run()}>
         <Svg type="right" />
       </a>
     </>
