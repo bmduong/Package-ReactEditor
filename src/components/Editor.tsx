@@ -170,6 +170,7 @@ export const Editor = memo(({
             ];
           },
           suggestion: {
+            char: '@',
             items: ({ query }: { query: string }) => {
               return mergedConfig.getSuggestion
                 ? mergedConfig.getSuggestion(query)
