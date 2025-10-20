@@ -534,7 +534,7 @@ const File$1 = () => {
             inputFile.click();
         }
     };
-    return (jsxRuntimeExports.jsx("a", { onClick: handleClick, children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("path", { d: "M13.234 20.252 21 12.3" }), jsxRuntimeExports.jsx("path", { d: "m16 6-8.414 8.586a2 2 0 0 0 0 2.828 2 2 0 0 0 2.828 0l8.414-8.586a4 4 0 0 0 0-5.656 4 4 0 0 0-5.656 0l-8.415 8.585a6 6 0 1 0 8.486 8.486" })] }) }));
+    return (jsxRuntimeExports.jsx("a", { title: "Add File", onClick: handleClick, children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("path", { d: "M13.234 20.252 21 12.3" }), jsxRuntimeExports.jsx("path", { d: "m16 6-8.414 8.586a2 2 0 0 0 0 2.828 2 2 0 0 0 2.828 0l8.414-8.586a4 4 0 0 0 0-5.656 4 4 0 0 0-5.656 0l-8.415 8.585a6 6 0 1 0 8.486 8.486" })] }) }));
 };
 
 const Svg$1 = ({ level }) => {
@@ -585,7 +585,7 @@ const Image = () => {
             inputFile.click();
         }
     };
-    return (jsxRuntimeExports.jsx("a", { onClick: handleClick, children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", ry: "2" }), jsxRuntimeExports.jsx("circle", { cx: "9", cy: "9", r: "2" }), jsxRuntimeExports.jsx("path", { d: "m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" })] }) }));
+    return (jsxRuntimeExports.jsx("a", { title: "Add Image", onClick: handleClick, children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", ry: "2" }), jsxRuntimeExports.jsx("circle", { cx: "9", cy: "9", r: "2" }), jsxRuntimeExports.jsx("path", { d: "m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" })] }) }));
 };
 
 const Italic = () => {
@@ -632,7 +632,7 @@ const Link = () => {
 
 const Mention = () => {
     const { editor } = useEditorData();
-    return (jsxRuntimeExports.jsx("a", { onClick: () => editor.chain().focus().insertContent(' @').run(), children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("circle", { cx: "12", cy: "12", r: "4" }), jsxRuntimeExports.jsx("path", { d: "M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8" })] }) }));
+    return (jsxRuntimeExports.jsx("a", { title: "Mention", onClick: () => editor.chain().focus().insertContent(' @').run(), children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntimeExports.jsx("circle", { cx: "12", cy: "12", r: "4" }), jsxRuntimeExports.jsx("path", { d: "M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8" })] }) }));
 };
 
 const OrderedList = () => {
@@ -654,7 +654,7 @@ const Svg = ({ type }) => {
 };
 const TextAlign = () => {
     const { editor } = useEditorData();
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("a", { onClick: () => editor.chain().focus().setTextAlign('justify').run(), children: jsxRuntimeExports.jsx(Svg, { type: "justify" }) }), jsxRuntimeExports.jsx("a", { onClick: () => editor.chain().focus().setTextAlign('left').run(), children: jsxRuntimeExports.jsx(Svg, { type: "left" }) }), jsxRuntimeExports.jsx("a", { onClick: () => editor.chain().focus().setTextAlign('center').run(), children: jsxRuntimeExports.jsx(Svg, { type: "center" }) }), jsxRuntimeExports.jsx("a", { onClick: () => editor.chain().focus().setTextAlign('right').run(), children: jsxRuntimeExports.jsx(Svg, { type: "right" }) })] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("a", { title: "Alignment Justify", onClick: () => editor.chain().focus().setTextAlign('justify').run(), children: jsxRuntimeExports.jsx(Svg, { type: "justify" }) }), jsxRuntimeExports.jsx("a", { title: "Alignment Left", onClick: () => editor.chain().focus().setTextAlign('left').run(), children: jsxRuntimeExports.jsx(Svg, { type: "left" }) }), jsxRuntimeExports.jsx("a", { title: "Alignment Center", onClick: () => editor.chain().focus().setTextAlign('center').run(), children: jsxRuntimeExports.jsx(Svg, { type: "center" }) }), jsxRuntimeExports.jsx("a", { title: "Alignment Right", onClick: () => editor.chain().focus().setTextAlign('right').run(), children: jsxRuntimeExports.jsx(Svg, { type: "right" }) })] }));
 };
 
 const Underline = () => {
@@ -889,10 +889,11 @@ const Editor = require$$0.memo(({ config, value, onChange, onFocus, onBlur, }) =
                         react.mergeAttributes({
                             class: 'mention',
                         }, options.HTMLAttributes),
-                        `${options.suggestion.char}${node.attrs.label}`,
+                        `${options.suggestion.char || '@'}${node.attrs.label}`,
                     ];
                 },
                 suggestion: {
+                    char: '@',
                     items: ({ query }) => {
                         return mergedConfig.getSuggestion
                             ? mergedConfig.getSuggestion(query)
