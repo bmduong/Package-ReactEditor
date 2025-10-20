@@ -166,7 +166,7 @@ export const Editor = memo(({
               mergeAttributes({
                 class: 'mention',
               }, options.HTMLAttributes),
-              `${options.suggestion.char}${node.attrs.label}`,
+              `${options.suggestion.char || '@'}${node.attrs.label}`,
             ];
           },
           suggestion: {
