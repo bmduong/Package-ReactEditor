@@ -121,6 +121,7 @@ The editor supports the following features:
 | `uploadImage`   | `(files) => Promise<string[]>`                                 | No       | Function to handle image uploads and return URLs.                                   |
 | `uploadFile`    | `(files) => Promise<FileItem[]>`                               | No       | Function to handle file uploads and return URLs.                                    |
 | `getSuggestion` | `(query) => Array<SuggestionItem>`                             | No       | Function to provide mention suggestions based on the query.                         |
+| `trigger`       | `(e) => boolean`                                               | No       | Triggered when the user clicks on the editor content.                               |
 
 ### `MenuItem`
 
