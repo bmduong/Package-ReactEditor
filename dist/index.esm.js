@@ -497,25 +497,8 @@ const File$1 = () => {
             if (config.uploadFile) {
                 config.uploadFile(files).then((list) => {
                     list.map((item) => {
-                        editor.chain().focus().insertContent([
-                            {
-                                type: 'text',
-                                text: item.name,
-                                marks: [
-                                    {
-                                        type: 'link',
-                                        attrs: {
-                                            href: item.url,
-                                            target: '_blank',
-                                        },
-                                    },
-                                ],
-                            },
-                            {
-                                type: 'text',
-                                text: ' ',
-                            },
-                        ]).run();
+                        const content = item.html || `<a href="${item.url}" target="_blank">${item.name}</a>`;
+                        editor.chain().focus().insertContent(content).run();
                     });
                 });
             }
@@ -757,6 +740,9 @@ styleInject(css_248z$1);
 const EditorContent = ({ onFocus, onBlur, }) => {
     const { editor, config } = useEditorData();
     const handleClick = useCallback((e) => {
+        if (config.trigger && !config.trigger(e)) {
+            return false;
+        }
         if (e.target instanceof HTMLElement && e.target.closest('img')) {
             const img = e.target.closest('img');
             if (img.parentNode && img.parentNode.tagName === 'A') {

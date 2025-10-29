@@ -32,6 +32,7 @@ export type SuggestionItem = {
 export type FileItem = {
   name: string;
   url: string;
+  html?: string;
 };
 
 export type EditorProps = {
@@ -51,4 +52,5 @@ export type EditorConfig = {
   uploadImage?: (files: FileList | File[]) => Promise<string[]>;
   uploadFile?: (files: FileList | File[]) => Promise<FileItem[]>;
   getSuggestion?: (query: string) => Array<SuggestionItem>;
+  trigger?: (e: React.MouseEvent<HTMLDivElement>) => boolean;
 };

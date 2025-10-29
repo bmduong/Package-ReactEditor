@@ -4,7 +4,7 @@ import { useEditorData } from '../../../hooks';
 export const File = () => {
   const { editor, config } = useEditorData();
   const [inputFile, setInputFile] = useState<HTMLInputElement | null>(null);
-  
+
   useEffect(() => {
     const input = document.createElement('input');
     input.type = 'file';
@@ -18,25 +18,9 @@ export const File = () => {
       if (config.uploadFile) {
         config.uploadFile(files).then((list) => {
           list.map((item) => {
-            editor.chain().focus().insertContent([
-              {
-                type: 'text',
-                text: item.name,
-                marks: [
-                  {
-                    type: 'link',
-                    attrs: {
-                      href: item.url,
-                      target: '_blank',
-                    },
-                  },
-                ],
-              },
-              {
-                type: 'text',
-                text: ' ',
-              },
-            ]).run();
+            const content = item.html || `<a href="${item.url}" target="_blank">${item.name}</a>`;
+
+            editor.chain().focus().insertContent(content).run();
           });
         });
       } else {

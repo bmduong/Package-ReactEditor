@@ -14,6 +14,10 @@ const EditorContent = ({
   const { editor, config } = useEditorData();
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (config.trigger && !config.trigger(e)) {
+      return false;
+    }
+
     if (e.target instanceof HTMLElement && e.target.closest('img')) {
       const img = e.target.closest('img') as HTMLImageElement;
       if (img.parentNode && (img.parentNode as HTMLElement).tagName === 'A') {
